@@ -3,9 +3,9 @@ import { db } from '../db/mock';
 
 export const readHandler = (app: Elysia) => {
   return app.get(
-    '/:shortUrl',
+    '/:generateUrl',
     ({ params, set }) => {
-      const url = db.urls.find((url) => url.shortUrl === params.shortUrl);
+      const url = db.urls.find((url) => url.generateUrl === params.generateUrl);
 
       if (!url) {
         set.status = 404;
@@ -17,7 +17,7 @@ export const readHandler = (app: Elysia) => {
     },
     {
       params: t.Object({
-        shortUrl: t.String(),
+        generateUrl: t.String(),
       }),
       detail: {
         tags: ['api'],

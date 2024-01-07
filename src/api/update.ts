@@ -3,9 +3,9 @@ import { db } from '../db/mock';
 
 export const updateHandler = (app: Elysia) => {
   return app.put(
-    '/:shortUrl',
+    '/:generateUrl',
     ({ body, params, set }) => {
-      const url = db.urls.find((url) => url.shortUrl === params.shortUrl);
+      const url = db.urls.find((url) => url.generateUrl === params.generateUrl);
 
       if (!url) {
         set.status = 404;
@@ -16,7 +16,7 @@ export const updateHandler = (app: Elysia) => {
       const updatedUrl = { ...url, originalUrl: body.newOriginalUrl };
 
       db.urls = db.urls.map((url) => {
-        return url.shortUrl === params.shortUrl ? updatedUrl : url;
+        return url.generateUrl === params.generateUrl ? updatedUrl : url;
       });
 
       return { message: 'Updated', success: true, url: updatedUrl };
@@ -26,7 +26,7 @@ export const updateHandler = (app: Elysia) => {
         newOriginalUrl: t.String(),
       }),
       params: t.Object({
-        shortUrl: t.String(),
+        generateUrl: t.String(),
       }),
       detail: {
         tags: ['api'],

@@ -3,9 +3,9 @@ import { db } from '../db/mock';
 
 export const deleteHandler = (app: Elysia) => {
   return app.delete(
-    '/:shortUrl',
+    '/:generateUrl',
     ({ params, set }) => {
-      const url = db.urls.find((url) => url.shortUrl === params.shortUrl);
+      const url = db.urls.find((url) => url.generateUrl === params.generateUrl);
 
       if (!url) {
         set.status = 404;
@@ -13,13 +13,13 @@ export const deleteHandler = (app: Elysia) => {
         return { message: 'Not found', success: false };
       }
 
-      db.urls = db.urls.filter((url) => url.shortUrl !== params.shortUrl);
+      db.urls = db.urls.filter((url) => url.generateUrl !== params.generateUrl);
 
       return { message: 'Deleted', success: true, url };
     },
     {
       params: t.Object({
-        shortUrl: t.String(),
+        generateUrl: t.String(),
       }),
       detail: {
         tags: ['api'],
