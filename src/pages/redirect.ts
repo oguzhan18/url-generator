@@ -3,9 +3,9 @@ import { db } from '../db/mock';
 
 export const redirectHandler = (app: Elysia) => {
   return app.get(
-    '/:shortUrl',
+    '/:generateUrl',
     ({ params, set }) => {
-      const redirectTo = db.urls.find((url) => url.shortUrl === params.shortUrl)
+      const redirectTo = db.urls.find((url) => url.generateUrl === params.generateUrl)
         ?.originalUrl;
 
       if (!redirectTo) {
@@ -18,7 +18,7 @@ export const redirectHandler = (app: Elysia) => {
     },
     {
       params: t.Object({
-        shortUrl: t.String(),
+        generateUrl: t.String(),
       }),
       detail: {
         description: 'Redirect to original URL',

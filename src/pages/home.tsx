@@ -10,15 +10,15 @@ export const homeHandler = (app: Elysia) => {
       <BaseLayout enableHtmx>
         <main>
           <form hx-post="/api" hx-target="#response">
-            <h1>Shorten a URL</h1>
+            <h1>Generate a URL</h1>
             <label for="url">URL</label>
             <input
               id="url"
               name="url"
               type="url"
-              placeholder="https://example.com"
+              placeholder="https://github.com/oguzhan18"
             />
-            <button>Shorten</button>
+            <button>Generate URL</button>
           </form>
           <div id="response" />
         </main>

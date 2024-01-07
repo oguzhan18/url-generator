@@ -23,7 +23,7 @@ const app = new Elysia()
         tags: [
           {
             name: 'api',
-            description: 'API endpoints for URL shortener CRUD operations',
+            description: 'API endpoints for URL generator CRUD operations',
           },
           {
             name: 'pages',

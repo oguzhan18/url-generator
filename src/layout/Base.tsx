@@ -8,7 +8,7 @@ export function BaseLayout(
     enableHtmx?: boolean;
   }>,
 ) {
-  const title = `${props.title ?? 'Simple URL shortener'} | ${
+  const title = `${props.title ?? 'Simple URL generator'} | ${
     packageJson.author.name
   }`;
 
