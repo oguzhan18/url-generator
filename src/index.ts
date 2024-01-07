@@ -6,6 +6,8 @@ import { apiRoutes } from './api';
 import { pageRoutes } from './pages';
 
 const app = new Elysia()
+  .state('build', 1)
+  .get('/', ({ store: { build } }) => build)
   .use(
     swagger({
       documentation: {
@@ -35,6 +37,8 @@ const app = new Elysia()
   .use(apiRoutes)
   .use(pageRoutes)
   .listen(3000);
+
+
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,

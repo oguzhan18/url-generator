@@ -2,7 +2,7 @@
   "name": "url-generator",
   "description": "A simple URL Generator",
   "version": "0.0.1",
-  "module": "src/index.js",
+  "module": "src/index.ts",
   "private": true,
   "author": {
     "name": "Oğuzhan ÇART",
